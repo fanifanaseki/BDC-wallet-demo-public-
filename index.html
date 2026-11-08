@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000814" />
+  <meta name="description" content="BDCCOIN - Smart, Safe, Global cryptocurrency wallet. Founded by MD Hasan." />
+  <meta name="keywords" content="BDCCOIN, BDC, crypto, wallet, blockchain, decentralized" />
+  <meta name="author" content="MD Hasan" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="BDCCOIN" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="manifest" href="manifest.json" />
+  <title>BDCCOIN - Your Trusted Crypto Wallet</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ==================== SPLASH SCREEN ==================== -->
+  <section id="splashScreen" class="screen splash-screen">
+    <div class="bg-container">
+      <div class="globe"></div><div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
+      <div class="stars" id="splashStars"></div>
+    </div>
+    <div class="splash-content">
+      <div class="logo-container">
+        <div class="logo-coin"><div class="bitcoin-symbol">₿</div><div class="bdccoin-text">BDCCOIN</div></div>
+        <div class="ai-robot">🤖<div class="ai-badge">AI</div></div>
+      </div>
+      <h1 class="app-title">BDCCOIN</h1>
+      <div class="app-subtitle">Your Trusted Crypto Wallet</div>
+      <div class="app-tagline">Smart • Safe • Global • For Everyone</div>
+      <div class="loading-container"><div class="loading-bar"></div></div>
+      <p class="loading-text">Initializing secure connection...</p>
+    </div>
+  </section>
+
+  <!-- ==================== LOGIN SCREEN ==================== -->
+  <section id="loginScreen" class="screen login-screen" style="display:none;">
+    <div class="bg-container">
+      <div class="globe"></div><div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
+      <div class="stars" id="loginStars"></div>
+    </div>
+    <div class="login-container">
+      <div class="logo-section">
+        <div class="logo-coin login-logo"><div class="bitcoin-symbol">₿</div></div>
+        <h1 class="app-title login-title">BDCCOIN</h1>
+        <p class="app-subtitle">Secure Login</p>
+      </div>
+      <div class="login-options" id="loginOptions">
+        <button class="login-btn" onclick="showPinLogin()"><span class="login-icon">🔢</span><span>PIN Code</span></button>
+        <button class="login-btn" onclick="showBiometricLogin()"><span class="login-icon">👆</span><span>Fingerprint</span></button>
+        <button class="login-btn" onclick="showFaceIdLogin()"><span class="login-icon">😊</span><span>Face ID</span></button>
+      </div>
+      <div class="pin-section" id="pinSection" style="display:none;">
+        <h2 class="pin-title">Enter Your 6-Digit PIN</h2>
+        <div class="pin-inputs">
+          <input type="password" class="pin-input" maxlength="1" data-index="0" inputmode="numeric" />
+          <input type="password" class="pin-input" maxlength="1" data-index="1" inputmode="numeric" />
+          <input type="password" class="pin-input" maxlength="1" data-index="2" inputmode="numeric" />
+          <input type="password" class="pin-input" maxlength="1" data-index="3" inputmode="numeric" />
+          <input type="password" class="pin-input" maxlength="1" data-index="4" inputmode="numeric" />
+          <input type="password" class="pin-input" maxlength="1" data-index="5" inputmode="numeric" />
+        </div>
+        <button class="pin-submit" onclick="verifyPin()">Login</button>
+        <div class="error-message" id="errorMessage">Incorrect PIN. Please try again.</div>
+        <button class="back-btn" onclick="backToLoginOptions()">← Back</button>
+      </div>
+      <div class="security-badge"><span class="security-icon">🔒</span><span class="security-text">Quantum-Resistant Encryption Active</span></div>
+      <div class="founder-badge"><strong>Project Founder:</strong> MD Hasan<br><strong>Max Supply:</strong> 1,000,000,000,000 BDC</div>
+    </div>
+  </section>
+
+  <!-- ==================== HOME SCREEN ==================== -->
+  <section id="homeScreen" class="screen home-screen" style="display:none;">
+    <div class="demo-notice">DEMO PROTOTYPE - Max Supply: 1,000,000,000,000 BDC</div>
+    <div class="bg-container">
+      <div class="globe"></div><div class="orbit orbit-1"></div><div class="orbit orbit-2"></div>
+      <div class="stars" id="homeStars"></div>
+    </div>
+    <div class="app">
+      <div class="status-bar">
+        <div class="time" id="currentTime">9:41</div>
+        <div class="status-icons">
+          <div class="signal-bars"><div class="signal-bar"></div><div class="signal-bar"></div><div class="signal-bar"></div><div class="signal-bar"></div></div>
+          <span class="wifi-icon">📶</span>
+          <div class="battery">100</div>
+        </div>
+      </div>
+      <div class="top-nav">
+        <div class="profile-btn" id="profileBtn" onclick="switchScreen('profileScreen', null)">
+          <div class="profile-avatar-small">👤</div>
+        </div>
+        <div class="notification-btn" id="notifBtn">
+          <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
+          <div class="badge">2</div>
+        </div>
+      </div>
+      <div class="hero">
+        <div class="logo-container">
+          <div class="logo-coin"><div class="bitcoin-symbol">₿</div><div class="bdccoin-text">BDCCOIN</div></div>
+          <div class="ai-robot">🤖<div class="ai-badge">AI</div></div>
+        </div>
+        <h1 class="app-title">BDCCOIN</h1>
+        <div class="app-subtitle">Your Trusted Crypto Wallet</div>
+        <div class="app-tagline">Smart • Safe • Global • For Everyone</div>
+      </div>
+      <div class="balance-card">
+        <div class="balance-header">
+          <div class="balance-label">Total Balance <span class="eye-icon" id="eyeIcon">👁️</span></div>
+        </div>
+        <div class="balance-amount" id="balanceAmount">1,000,000,000,000</div>
+        <div class="balance-change">
+          <span class="change-positive">▲ +12.50%</span>
+          <span class="change-amount">(1.25T)</span>
+        </div>
+        <div class="balance-footer">
+          <div class="bdc-brand"><div class="bdc-logo-small">₿</div><div class="bdc-text">BDC</div></div>
+          <div class="mini-chart">
+            <div class="chart-bar"></div><div class="chart-bar"></div><div class="chart-bar"></div>
+            <div class="chart-bar"></div><div class="chart-bar"></div><div class="chart-bar"></div>
+            <div class="chart-bar"></div><div class="chart-bar"></div><div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-btn" data-feature="Launchpool"><span class="feature-icon">🚀</span><div class="feature-label">Launchpool</div></div>
+        <div class="feature-btn" data-feature="Earn"><span class="feature-icon">💰</span><div class="feature-label">Earn</div></div>
+        <div class="feature-btn" data-feature="Trading Bots"><span class="feature-icon">🤖</span><div class="feature-label">Trading Bots</div></div>
+        <div class="feature-btn" data-feature="Red Packet"><span class="feature-icon">🎁</span><div class="feature-label">Red Packet</div></div>
+        <div class="feature-btn" data-feature="P2P"><span class="feature-icon">👥</span><div class="feature-label">P2P</div></div>
+        <div class="feature-btn" data-feature="Find Offer"><span class="feature-icon">🔍</span><div class="feature-label">Find Offer</div></div>
+        <div class="feature-btn" data-feature="Bank Transfer"><span class="feature-icon">🏦</span><div class="feature-label">Bank Transfer</div></div>
+        <div class="feature-btn" data-feature="Add Funds"><span class="feature-icon">➕</span><div class="feature-label">Add Funds</div></div>
+      </div>
+      <div class="services-entry-btn" onclick="switchScreen('servicesScreen', null)">
+        <span class="services-entry-icon">⚡</span>
+        <span class="services-entry-text">All Services</span>
+        <span class="services-entry-arrow">›</span>
+      </div>
+      <div class="security-banner" id="securityBanner">
+        <div class="shield-icon">✓</div>
+        <div class="security-text">
+          <div class="security-title">Your Account is Safe</div>
+          <div class="security-subtitle">100% Secure & Protected</div>
+        </div>
+        <div class="arrow-icon">›</div>
+      </div>
+      <div class="market-section">
+        <div class="market-header">
+          <div class="market-title">
+            <div class="market-title-icon"><span></span><span></span><span></span></div>
+            Live Market
+          </div>
+          <div class="see-all" id="seeAllMarkets">See All ›</div>
+        </div>
+        <div class="market-item">
+          <div class="coin-icon coin-btc">₿</div>
+          <div class="coin-info"><div class="coin-name">BTC</div></div>
+          <div class="coin-price">$67,432.21</div>
+          <div class="coin-change">+1.24%</div>
+        </div>
+        <div class="market-item">
+          <div class="coin-icon coin-eth">Ξ</div>
+          <div class="coin-info"><div class="coin-name">ETH</div></div>
+          <div class="coin-price">$3,245.78</div>
+          <div class="coin-change">+0.97%</div>
+        </div>
+        <div class="market-item">
+          <div class="coin-icon coin-bdc">₿</div>
+          <div class="coin-info"><div class="coin-name">BDC</div></div>
+          <div class="coin-price">$0.1250</div>
+          <div class="coin-change">+2.15%</div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item active" data-screen="homeScreen" onclick="switchScreen('homeScreen', this)"><span class="nav-icon">🏠</span><div class="nav-label">Home</div></div>
+      <div class="nav-item" data-screen="marketsScreen" onclick="switchScreen('marketsScreen', this)"><span class="nav-icon">📊</span><div class="nav-label">Markets</div></div>
+      <div class="nav-item" data-screen="tradeScreen" onclick="switchScreen('tradeScreen', this)"><span class="nav-icon">⇄</span><div class="nav-label">Trade</div></div>
+      <div class="nav-item" data-screen="futuresScreen" onclick="switchScreen('futuresScreen', this)"><span class="nav-icon">📈</span><div class="nav-label">Futures</div></div>
+      <div class="nav-item" data-screen="assetsScreen" onclick="switchScreen('assetsScreen', this)"><span class="nav-icon">👛</span><div class="nav-label">Assets</div></div>
+    </div>
+    <div id="menuModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header"><h2>BDCCOIN Menu</h2><span class="close" id="closeMenu">&times;</span></div>
+        <div class="modal-body">
+          <div class="menu-item" data-demo="Language">🌐 Language</div>
+          <div class="menu-item" onclick="switchScreen('settingsScreen', null); closeMenuFn();">⚙️ Settings</div>
+          <div class="menu-item" data-demo="About BDCCOIN">ℹ️ About BDCCOIN</div>
+          <div class="menu-item" data-demo="Governance">⚖️ Governance</div>
+          <div class="menu-item" data-demo="Security">🔒 Security</div>
+          <div class="menu-item" data-demo="Support">💬 Support</div>
+          <div class="menu-item download-history-btn" id="downloadHistoryBtn">
+            <span class="download-icon">⬇️</span><span class="download-label">Download Transaction History</span>
+          </div>
+          <div class="menu-item" id="logoutBtn">
+            <span class="download-icon">🚪</span><span class="download-label">Logout</span>
+          </div>
+          <div class="founder-info">
+            <strong>Project Founder:</strong> MD Hasan<br>
+            <strong>Status:</strong> Early Development Phase<br>
+            <strong>Max Supply:</strong> 1,000,000,000,000 BDC
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MARKETS SCREEN ==================== -->
+  <section id="marketsScreen" class="screen" style="display:none;">
+    <div class="demo-notice">DEMO PROTOTYPE - Live Market Data Simulation</div>
+    <div class="app markets-app">
+      <div class="markets-top-bar">
+        <div class="search-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search coins and trends" class="search-input">
+        </div>
+        <div class="menu-dots" id="marketsMenuBtn">⋮</div>
+      </div>
+      <div id="marketsDropdown" class="dropdown-menu" style="display:none;">
+        <div class="dropdown-item">🔔 Price Alerts</div>
+        <div class="dropdown-item">⚙️ Change(%) & Chart Timezone</div>
+        <div class="dropdown-item">📱 Floating Window</div>
+        <div class="dropdown-item">🅰️ Alpha Data Source</div>
+        <div class="dropdown-item">📋 Manage Tabs</div>
+      </div>
+      <div class="markets-tabs-container">
+        <div class="markets-tabs">
+          <div class="tab-item active">For You</div>
+          <div class="tab-item">Favorites</div>
+          <div class="tab-item">Crypto</div>
+          <div class="tab-item">TradFi</div>
+          <div class="tab-item">Alpha</div>
+          <div class="tab-item">Prediction</div>
+        </div>
+      </div>
+      <div class="markets-content">
+        <div class="market-card brief-card">
+          <div class="brief-header">
+            <span class="brief-badge">Market Brief</span>
+            <div class="brief-icon">😊</div>
+          </div>
+          <h3 class="brief-title">CoreWeave Drops 11% as Data Center Fears Grow</h3>
+        </div>
+        <div class="market-grid-2">
+          <div class="market-card pnl-card">
+            <div class="card-header">PNL Recap <span>›</span></div>
+            <div class="pnl-amount">PnL Amount 👁️</div>
+            <div class="pnl-value positive">+৳0.01</div>
+            <div class="pnl-percent positive">+0.03%</div>
+            <div class="pnl-status">Total value remained stable</div>
+          </div>
+          <div class="market-card ideas-card">
+            <div class="card-header">Trade Ideas <span>›</span></div>
+            <div class="idea-item">📊 K-line Patterns</div>
+            <div class="idea-item">📈 Easy Screening</div>
+            <div class="idea-item">📉 Quant Strategies</div>
+            <div class="idea-item">⭐ My Favorites</div>
+          </div>
+        </div>
+        <div class="market-card trader-picks-card">
+          <div class="card-header">Trader Picks <span>›</span></div>
+          <div class="trader-info">
+            <div class="trader-avatar">👤</div>
+            <div>
+              <div class="trader-name">0xBDCCOIN_Trader</div>
+              <div class="trader-stat">Top 76 live futures PnL in 1D</div>
+            </div>
+          </div>
+          <div class="trade-signal">
+            <div class="signal-pair">ETHUSDT <span class="badge">Perp</span> <span class="badge">10X</span> <span class="badge red">Opening Short</span></div>
+            <button class="trade-btn">Trade</button>
+          </div>
+          <div class="signal-pnl">
+            <div class="pnl-label">Unrealized PNL (USDT)</div>
+            <div class="pnl-value positive">+10,675.04 <span class="percent">+83.20%</span></div>
+          </div>
+        </div>
+        <div class="market-card tracker-card">
+          <div class="card-header">Smart Tracker - Mine <span>▼</span></div>
+          <div class="tracker-item">
+            <div class="tracker-time">19:50:15 Triggered</div>
+            <div class="tracker-coin">
+              <span class="coin-icon-small">⭐</span> STRK
+              <span class="tracker-change positive">Rally +5.33%</span>
+            </div>
+            <div class="tracker-desc">⚡ The price dropped notably before bouncing...</div>
+          </div>
+          <div class="tracker-item">
+            <div class="tracker-time">19:35:10 Triggered</div>
+            <div class="tracker-coin">
+              <span class="coin-icon-small">⭐</span> MAGIC
+              <span class="tracker-change positive">7D High +11.08%</span>
+            </div>
+            <div class="tracker-desc">⚡ The price is holding at a seven-day high...</div>
+          </div>
+        </div>
+        <div class="market-card master-trades-card">
+          <div class="card-header">Master Trades <span>›</span></div>
+          <div class="master-grid">
+            <div class="master-item">
+              <div class="master-avatar">👔</div>
+              <div class="master-name">Dalio Holdings</div>
+              <div class="master-stock positive">SPY +0.70%</div>
+              <div class="master-stock positive">IVV +0.72%</div>
+            </div>
+            <div class="master-item">
+              <div class="master-avatar">👓</div>
+              <div class="master-name">Gates Holdings</div>
+              <div class="master-stock negative">BRK.B -1.51%</div>
+              <div class="master-stock positive">CAT +2.02%</div>
+            </div>
+          </div>
+        </div>
+        <div class="market-card indices-card">
+          <div class="card-header">Indices <span>›</span></div>
+          <div class="indices-content">
+            <div class="indices-label">BTC</div>
+            <div class="indices-status cold">COLD</div>
+            <div class="indices-chart-placeholder">📉</div>
+            <div class="indices-bar">
+              <div class="bar-green" style="width: 48%;"></div>
+              <div class="bar-red" style="width: 52%;"></div>
+            </div>
+            <div class="indices-stats">
+              <div class="stat-green">Inflow: 20,289 BTC</div>
+              <div class="stat-red">Outflow: 21,459 BTC</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" data-screen="homeScreen" onclick="switchScreen('homeScreen', this)"><span class="nav-icon">🏠</span><div class="nav-label">Home</div></div>
+      <div class="nav-item active" data-screen="marketsScreen" onclick="switchScreen('marketsScreen', this)"><span class="nav-icon">📊</span><div class="nav-label">Markets</div></div>
+      <div class="nav-item" data-screen="tradeScreen" onclick="switchScreen('tradeScreen', this)"><span class="nav-icon">⇄</span><div class="nav-label">Trade</div></div>
+      <div class="nav-item" data-screen="futuresScreen" onclick="switchScreen('futuresScreen', this)"><span class="nav-icon">📈</span><div class="nav-label">Futures</div></div>
+      <div class="nav-item" data-screen="assetsScreen" onclick="switchScreen('assetsScreen', this)"><span class="nav-icon">👛</span><div class="nav-label">Assets</div></div>
+    </div>
+  </section>
+
+  <!-- ==================== TRADE SCREEN ==================== -->
+  <section id="tradeScreen" class="screen" style="display:none;">
+    <div class="demo-notice">DEMO PROTOTYPE - Spot Trading Simulation</div>
+    <div class="app trade-app">
+      <div class="trade-top-tabs">
+        <div class="trade-tab">Convert</div>
+        <div class="trade-tab active">Spot</div>
+        <div class="trade-tab">Stocks</div>
+        <div class="trade-tab">Prediction</div>
+        <div class="trade-tab" id="tradeMenuBtn">☰</div>
+      </div>
+      <div class="trade-notice">
+        <span class="notice-icon">🔔</span>
+        <span class="notice-text">Important Notice: Notice of Removal of Spot Trading ...</span>
+        <span class="notice-close" onclick="this.parentElement.style.display='none'">✕</span>
+      </div>
+      <div class="pair-selector">
+        <div class="pair-info">
+          <h2 class="pair-name">BTC/USDT <span class="pair-arrow">▼</span></h2>
+          <div class="pair-change negative">-4.00%</div>
+        </div>
+        <div class="pair-actions">
+          <span class="pair-action-icon">📊</span>
+          <span class="pair-action-icon">⋮</span>
+        </div>
+      </div>
+      <div class="trade-toggle-container">
+        <div class="trade-toggle">
+          <button class="toggle-btn buy active" id="buyBtn" onclick="setTradeMode('buy')">Buy</button>
+          <button class="toggle-btn sell" id="sellBtn" onclick="setTradeMode('sell')">Sell</button>
+        </div>
+        <div class="margin-toggle">
+          <span class="margin-label">Margin</span>
+          <label class="switch"><input type="checkbox" id="marginToggle"><span class="slider"></span></label>
+        </div>
+      </div>
+      <div class="order-form-container">
+        <div class="order-form">
+          <div class="form-row">
+            <div class="order-type-selector">
+              <span class="order-type-label" id="orderTypeLabel">Market</span>
+              <span class="info-icon">ⓘ</span>
+              <span class="dropdown-arrow">▼</span>
+            </div>
+          </div>
+          <div class="form-row total-row">
+            <span class="input-label">Total</span>
+            <input type="number" class="form-input" id="totalInput" placeholder="0.00" step="0.01">
+            <span class="currency-selector">USDT <span>▼</span></span>
+          </div>
+          <div class="slider-container">
+            <div class="slider-track">
+              <div class="slider-fill" id="sliderFill" style="width: 0%;"></div>
+              <div class="slider-handle" id="sliderHandle" style="left: 0%;"></div>
+            </div>
+            <div class="slider-points">
+              <span class="slider-point" data-percent="25" onclick="setSliderPercent(25)">◇</span>
+              <span class="slider-point" data-percent="50" onclick="setSliderPercent(50)">◇</span>
+              <span class="slider-point" data-percent="75" onclick="setSliderPercent(75)">◇</span>
+              <span class="slider-point" data-percent="100" onclick="setSliderPercent(100)">◇</span>
+            </div>
+          </div>
+          <div class="form-row checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="slippageCheck">
+              <span class="checkbox-text">Slippage Tolerance</span>
+            </label>
+          </div>
+          <div class="form-stats">
+            <div class="stat-row"><span class="stat-label">Avbl <span>▼</span></span><span class="stat-value">0 USDT <span class="add-btn">⊕</span></span></div>
+            <div class="stat-row"><span class="stat-label">Max Buy</span><span class="stat-value">0 BTC</span></div>
+            <div class="stat-row"><span class="stat-label">Est. Fee</span><span class="stat-value">-- BTC</span></div>
+          </div>
+          <button class="trade-action-btn buy-btn" id="tradeActionBtn" onclick="executeTrade()">Buy BTC</button>
+        </div>
+        <div class="order-book">
+          <div class="order-book-header">
+            <div class="ob-col">Price <span class="ob-currency">(USDT)</span></div>
+            <div class="ob-col">Amount <span class="ob-currency">(BTC)</span> <span class="sort-icon">⇅</span></div>
+          </div>
+          <div class="order-book-asks" id="orderBookAsks"></div>
+          <div class="mid-price">
+            <div class="mid-price-value" id="midPriceValue">75,776.00</div>
+            <div class="mid-price-fiat">≈ ৳9,437,900.79</div>
+          </div>
+          <div class="order-book-bids" id="orderBookBids"></div>
+          <div class="ratio-bar-container">
+            <div class="ratio-bar">
+              <div class="ratio-green" id="ratioGreen" style="width: 10.75%;"></div>
+              <div class="ratio-red" id="ratioRed" style="width: 89.25%;"></div>
+            </div>
+            <div class="ratio-labels">
+              <span class="ratio-green-label" id="ratioGreenLabel">10.75%</span>
+              <span class="ratio-red-label" id="ratioRedLabel">89.25%</span>
+            </div>
+          </div>
+          <div class="step-selector">
+            <select class="step-select" id="stepSelect">
+              <option value="0.01">0.01</option>
+              <option value="0.1">0.1</option>
+              <option value="1">1</option>
+            </select>
+            <div class="step-icons">
+              <span class="step-icon red">■</span>
+              <span class="step-icon green">■</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trade-bottom-tabs">
+        <div class="trade-bottom-tab active" data-tab="openOrders" onclick="switchTradeTab('openOrders', this)">Open Orders (0)</div>
+        <div class="trade-bottom-tab" data-tab="holdings" onclick="switchTradeTab('holdings', this)">Holdings (1)</div>
+        <div class="trade-bottom-tab" data-tab="bots" onclick="switchTradeTab('bots', this)">Bots</div>
+        <span class="tab-action-icon">📋</span>
+      </div>
+      <div class="trade-tab-content">
+        <div class="tab-panel active" id="openOrdersPanel">
+          <div class="empty-state">
+            <div class="empty-icon">⚠️</div>
+            <div class="empty-text">No Open Orders</div>
+            <div class="empty-subtext">Available Funds: 0.00 USDT</div>
+          </div>
+        </div>
+        <div class="tab-panel" id="holdingsPanel">
+          <div class="holding-item">
+            <div class="holding-coin">
+              <div class="coin-icon coin-btc">₿</div>
+              <div><div class="holding-name">BTC</div><div class="holding-sub">Bitcoin</div></div>
+            </div>
+            <div class="holding-amount">
+              <div class="holding-value">0.00000000</div>
+              <div class="holding-fiat">≈ ৳0.00</div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-panel" id="botsPanel">
+          <div class="empty-state">
+            <div class="empty-icon">🤖</div>
+            <div class="empty-text">No Active Bots</div>
+            <div class="empty-subtext">Create a trading bot to automate your trades</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-section">
+        <div class="chart-header"><span>BTC/USDT Chart</span><span class="chart-toggle">▲</span></div>
+        <div class="chart-placeholder">
+          <div class="chart-canvas">
+            <svg viewBox="0 0 400 150" class="chart-svg">
+              <polyline points="0,100 40,80 80,90 120,60 160,70 200,40 240,50 280,30 320,45 360,20 400,35" fill="none" stroke="#00FF88" stroke-width="2"/>
+              <polyline points="0,100 40,80 80,90 120,60 160,70 200,40 240,50 280,30 320,45 360,20 400,35 400,150 0,150" fill="url(#chartGradient)" opacity="0.3"/>
+              <defs>
+                <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#00FF88"/>
+                  <stop offset="100%" stop-color="#00FF88" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" data-screen="homeScreen" onclick="switchScreen('homeScreen', this)"><span class="nav-icon">🏠</span><div class="nav-label">Home</div></div>
+      <div class="nav-item" data-screen="marketsScreen" onclick="switchScreen('marketsScreen', this)"><span class="nav-icon">📊</span><div class="nav-label">Markets</div></div>
+      <div class="nav-item active" data-screen="tradeScreen" onclick="switchScreen('tradeScreen', this)"><span class="nav-icon">⇄</span><div class="nav-label">Trade</div></div>
+      <div class="nav-item" data-screen="futuresScreen" onclick="switchScreen('futuresScreen', this)"><span class="nav-icon">📈</span><div class="nav-label">Futures</div></div>
+      <div class="nav-item" data-screen="assetsScreen" onclick="switchScreen('assetsScreen', this)"><span class="nav-icon">👛</span><div class="nav-label">Assets</div></div>
+    </div>
+  </section>
+
+  <!-- ==================== FUTURES SCREEN ==================== -->
+  <section id="futuresScreen" class="screen" style="display:none;">
+    <div class="demo-notice">DEMO PROTOTYPE - Futures Trading Simulation</div>
+    <div class="app futures-app">
+      <div class="futures-top-tabs">
+        <div class="futures-tab active" data-market="usdm" onclick="switchFuturesMarket('usdm', this)">USDⓈ-M</div>
+        <div class="futures-tab" data-market="coinm" onclick="switchFuturesMarket('coinm', this)">COIN-M</div>
+        <div class="futures-tab" data-market="options" onclick="switchFuturesMarket('options', this)">Options</div>
+        <div class="futures-tab" data-market="smart" onclick="switchFuturesMarket('smart', this)">Smart Money</div>
+        <div class="futures-tab-menu" id="futuresMenuBtn">☰</div>
+      </div>
+      <div class="trade-notice">
+        <span class="notice-icon">🔔</span>
+        <span class="notice-text">Important Notice: Important Updates on Dividend Adj...</span>
+        <span class="notice-close" onclick="this.parentElement.style.display='none'">✕</span>
+      </div>
+      <div class="pair-selector">
+        <div class="pair-info">
+          <h2 class="pair-name">BTCUSDT <span class="perp-badge">Perp</span> <span class="pair-arrow">▼</span></h2>
+          <div class="pair-change negative" id="futuresPairChange">-3.98%</div>
+        </div>
+        <div class="pair-actions">
+          <span class="pair-action-icon">📊</span>
+          <span class="pair-action-icon">⋮</span>
+        </div>
+      </div>
+      <div class="funding-info">
+        <div class="funding-label">Funding (8h) / Countdown</div>
+        <div class="funding-value">
+          <span class="funding-rate positive" id="fundingRate">0.00774%</span>
+          <span class="funding-countdown" id="fundingCountdown">01:14:57</span>
+        </div>
+      </div>
+      <div class="trade-toggle-container">
+        <div class="trade-toggle">
+          <button class="toggle-btn buy active" id="futBuyBtn" onclick="setFuturesMode('buy')">Buy</button>
+          <button class="toggle-btn sell" id="futSellBtn" onclick="setFuturesMode('sell')">Sell</button>
+        </div>
+      </div>
+      <div class="futures-controls">
+        <div class="margin-mode-selector">
+          <button class="mode-btn active" id="crossBtn" onclick="setMarginMode('cross')">Cross</button>
+          <button class="mode-btn" id="isolatedBtn" onclick="setMarginMode('isolated')">Isolated</button>
+        </div>
+        <button class="leverage-btn" id="leverageBtn" onclick="showLeverageModal()">5x</button>
+      </div>
+      <div class="order-form-container">
+        <div class="order-form">
+          <div class="form-row">
+            <div class="order-type-selector">
+              <span class="order-type-label" id="futOrderType">Limit</span>
+              <span class="info-icon">ⓘ</span>
+              <span class="dropdown-arrow">▼</span>
+            </div>
+          </div>
+          <div class="form-row input-row">
+            <span class="input-label">Price (USDT)</span>
+            <input type="number" class="form-input" id="futPriceInput" placeholder="75711.8" step="0.1" value="75711.8">
+            <button class="bbo-btn" onclick="setBBO()">BBO</button>
+          </div>
+          <div class="form-row input-row">
+            <span class="input-label">Amount</span>
+            <input type="number" class="form-input" id="futAmountInput" placeholder="0.000" step="0.001">
+            <span class="currency-selector">BTC <span>▼</span></span>
+          </div>
+          <div class="slider-container">
+            <div class="slider-track">
+              <div class="slider-fill" id="futSliderFill" style="width: 0%;"></div>
+              <div class="slider-handle" id="futSliderHandle" style="left: 0%;"></div>
+            </div>
+            <div class="slider-points">
+              <span class="slider-point" data-percent="25" onclick="setFutSliderPercent(25)">◇</span>
+              <span class="slider-point" data-percent="50" onclick="setFutSliderPercent(50)">◇</span>
+              <span class="slider-point" data-percent="75" onclick="setFutSliderPercent(75)">◇</span>
+              <span class="slider-point" data-percent="100" onclick="setFutSliderPercent(100)">◇</span>
+            </div>
+          </div>
+          <div class="form-row checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="reduceOnlyCheck">
+              <span class="checkbox-text">Reduce Only</span>
+            </label>
+            <select class="gtc-select" id="gtcSelect">
+              <option value="GTC">GTC</option>
+              <option value="IOC">IOC</option>
+              <option value="FOK">FOK</option>
+            </select>
+          </div>
+          <div class="form-stats">
+            <div class="stat-row">
+              <span class="stat-label">Avbl</span>
+              <span class="stat-value">0.00 USDT <span class="swap-icon">⇄</span></span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Max</span>
+              <span class="stat-value">0.000 BTC</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Cost</span>
+              <span class="stat-value">0.00 USDT</span>
+            </div>
+          </div>
+          <button class="trade-action-btn buy-btn" id="futActionBtn" onclick="executeFuturesTrade()">Buy / Long</button>
+        </div>
+        <div class="order-book">
+          <div class="order-book-header">
+            <div class="ob-col">Price <span class="ob-currency">(USDT)</span></div>
+            <div class="ob-col">Amount <span class="ob-currency">(BTC)</span></div>
+          </div>
+          <div class="order-book-asks" id="futOrderBookAsks"></div>
+          <div class="mid-price">
+            <div class="mid-price-value" id="futMidPrice">75,708.9</div>
+            <div class="mid-price-spot" id="futSpotPrice">75,716.0</div>
+          </div>
+          <div class="order-book-bids" id="futOrderBookBids"></div>
+          <div class="ratio-bar-container">
+            <div class="ratio-bar">
+              <div class="ratio-green" id="futRatioGreen" style="width: 96.93%;"></div>
+              <div class="ratio-red" id="futRatioRed" style="width: 3.07%;"></div>
+            </div>
+            <div class="ratio-labels">
+              <span class="ratio-green-label" id="futRatioGreenLabel">96.93%</span>
+              <span class="ratio-red-label" id="futRatioRedLabel">3.07%</span>
+            </div>
+          </div>
+          <div class="step-selector">
+            <select class="step-select" id="futStepSelect">
+              <option value="0.1">0.1</option>
+              <option value="0.01">0.01</option>
+              <option value="1">1</option>
+            </select>
+            <div class="step-icons">
+              <span class="step-icon red">■</span>
+              <span class="step-icon green">■</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="trade-bottom-tabs">
+        <div class="trade-bottom-tab active" data-tab="positions" onclick="switchFutTab('positions', this)">Positions (0)</div>
+        <div class="trade-bottom-tab" data-tab="futOrders" onclick="switchFutTab('futOrders', this)">Open Orders (0)</div>
+        <div class="trade-bottom-tab" data-tab="futBots" onclick="switchFutTab('futBots', this)">Bots</div>
+        <span class="tab-action-icon">📋</span>
+      </div>
+      <div class="trade-tab-content">
+        <div class="tab-panel active" id="positionsPanel">
+          <div class="empty-state">
+            <div class="empty-icon">📋</div>
+            <div class="empty-text">No Open Positions</div>
+            <div class="empty-subtext">Open a futures position to start trading with leverage</div>
+          </div>
+        </div>
+        <div class="tab-panel" id="futOrdersPanel">
+          <div class="empty-state">
+            <div class="empty-icon">📝</div>
+            <div class="empty-text">No Open Orders</div>
+            <div class="empty-subtext">Your pending futures orders will appear here</div>
+          </div>
+        </div>
+        <div class="tab-panel" id="futBotsPanel">
+          <div class="empty-state">
+            <div class="empty-icon">🤖</div>
+            <div class="empty-text">No Active Futures Bots</div>
+            <div class="empty-subtext">Create a futures trading bot to automate strategies</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-section">
+        <div class="chart-header"><span>BTCUSDT Perp Chart</span><span class="chart-toggle">▲</span></div>
+        <div class="chart-placeholder">
+          <div class="chart-canvas">
+            <svg viewBox="0 0 400 150" class="chart-svg">
+              <polyline points="0,80 40,90 80,70 120,95 160,60 200,85 240,50 280,75 320,40 360,65 400,45" fill="none" stroke="#FF3B30" stroke-width="2"/>
+              <polyline points="0,80 40,90 80,70 120,95 160,60 200,85 240,50 280,75 320,40 360,65 400,45 400,150 0,150" fill="url(#futChartGradient)" opacity="0.3"/>
+              <defs>
+                <linearGradient id="futChartGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FF3B30"/>
+                  <stop offset="100%" stop-color="#FF3B30" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="leverageModal" class="modal">
+      <div class="modal-content leverage-modal">
+        <div class="modal-header">
+          <h2>Adjust Leverage</h2>
+          <span class="close" id="closeLeverage">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="leverage-display">
+            <div class="leverage-value" id="leverageValue">5x</div>
+            <div class="leverage-mode" id="leverageModeDisplay">Cross</div>
+          </div>
+          <div class="leverage-slider-container">
+            <input type="range" class="leverage-slider" id="leverageSlider" min="1" max="125" value="5" oninput="updateLeverage(this.value)">
+            <div class="leverage-markers">
+              <span>1x</span><span>25x</span><span>50x</span><span>75x</span><span>100x</span><span>125x</span>
+            </div>
+          </div>
+          <div class="leverage-presets">
+            <button class="preset-btn" onclick="setLeverage(5)">5x</button>
+            <button class="preset-btn" onclick="setLeverage(10)">10x</button>
+            <button class="preset-btn" onclick="setLeverage(20)">20x</button>
+            <button class="preset-btn" onclick="setLeverage(50)">50x</button>
+            <button class="preset-btn" onclick="setLeverage(100)">100x</button>
+            <button class="preset-btn" onclick="setLeverage(125)">125x</button>
+          </div>
+          <button class="leverage-confirm-btn" onclick="confirmLeverage()">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" data-screen="homeScreen" onclick="switchScreen('homeScreen', this)"><span class="nav-icon">🏠</span><div class="nav-label">Home</div></div>
+      <div class="nav-item" data-screen="marketsScreen" onclick="switchScreen('marketsScreen', this)"><span class="nav-icon">📊</span><div class="nav-label">Markets</div></div>
+      <div class="nav-item" data-screen="tradeScreen" onclick="switchScreen('tradeScreen', this)"><span class="nav-icon">⇄</span><div class="nav-label">Trade</div></div>
+      <div class="nav-item active" data-screen="futuresScreen" onclick="switchScreen('futuresScreen', this)"><span class="nav-icon">📈</span><div class="nav-label">Futures</div></div>
+      <div class="nav-item" data-screen="assetsScreen" onclick="switchScreen('assetsScreen', this)"><span class="nav-icon">👛</span><div class="nav-label">Assets</div></div>
+    </div>
+  </section>
+
+  <!-- ==================== ASSETS SCREEN ==================== -->
+  <section id="assetsScreen" class="screen" style="display:none;">
+    <div class="demo-notice">DEMO PROTOTYPE - Assets Management</div>
+    <div class="app assets-app">
+      <div class="assets-top-tabs">
+        <div class="assets-tab active" onclick="switchAssetsTab('overview', this)">Overview</div>
+        <div class="assets-tab" onclick="switchAssetsTab('earn', this)">Earn</div>
+        <div class="assets-tab" onclick="switchAssetsTab('spot', this)">Spot</div>
+        <div class="assets-tab" onclick="switchAssetsTab('funding', this)">Funding</div>
+        <div class="assets-tab" onclick="switchAssetsTab('futures', this)">Futures</div>
+      </div>
+      <div class="assets-balance-section">
+        <div class="balance-header-row">
+          <span class="balance-label">Est. Total Value <span class="eye-icon" id="assetsEyeIcon" onclick="toggleAssetsBalance()">👁️</span></span>
+          <span class="history-icon" onclick="showHistoryModal()">📋</span>
+        </div>
+        <div class="assets-total-amount" id="assetsTotalAmount">৳67.55 <span class="currency-text">BDT</span> <span class="dropdown-arrow">▼</span></div>
+        <div class="assets-pnl">
+          Today's PNL <span class="positive">+৳0.00466813 (+0.01%)</span> <span class="arrow-right">›</span>
+        </div>
+      </div>
+      <div class="assets-action-grid">
+        <div class="action-btn" onclick="showDemo('Add Funds')"><div class="action-icon">↓</div><div class="action-label">Add Funds</div></div>
+        <div class="action-btn" onclick="showDemo('Send')"><div class="action-icon">↑</div><div class="action-label">Send</div></div>
+        <div class="action-btn" onclick="showDemo('Transfer')"><div class="action-icon">⇄</div><div class="action-label">Transfer</div></div>
+        <div class="action-btn" onclick="showDemo('Earn')"><div class="action-icon">💰</div><div class="action-label">Earn</div></div>
+      </div>
+      <div class="allocation-card">
+        <div class="allocation-header"><span>Allocation</span><span class="settings-icon">⚙️</span></div>
+        <div class="allocation-bar">
+          <div class="alloc-blue" style="width: 95%;"></div>
+          <div class="alloc-yellow" style="width: 5%;"></div>
+        </div>
+      </div>
+      <div class="balance-list-card">
+        <div class="balance-list-header"><span>Balance</span><span class="menu-icon">☰</span></div>
+        <div class="coin-item">
+          <div class="coin-left">
+            <div class="coin-icon-small" style="background: #26A17B;">₮</div>
+            <div class="coin-details"><div class="coin-name">USDT</div><div class="coin-sub">TetherUS</div></div>
+          </div>
+          <div class="coin-right">
+            <div class="coin-amount">0.54015969</div>
+            <div class="coin-fiat">৳67.28</div>
+            <div class="coin-actions">
+              <button class="mini-btn" onclick="showDemo('Earn USDT')">Earn</button>
+              <button class="mini-btn" onclick="showDemo('Trade USDT')">Trade</button>
+            </div>
+          </div>
+        </div>
+        <div class="coin-item">
+          <div class="coin-left">
+            <div class="coin-icon-small" style="background: #FF9900;">🐱</div>
+            <div class="coin-details"><div class="coin-name">CATI</div><div class="coin-sub">Catizen</div></div>
+          </div>
+          <div class="coin-right">
+            <div class="coin-amount">0.00955946</div>
+            <div class="coin-fiat">৳0.04861311</div>
+            <div class="coin-actions">
+              <button class="mini-btn" onclick="showDemo('Earn CATI')">Earn</button>
+              <button class="mini-btn" onclick="showDemo('Trade CATI')">Trade</button>
+            </div>
+          </div>
+        </div>
+        <div class="coin-item">
+          <div class="coin-left">
+            <div class="coin-icon-small" style="background: #2775CA;">$</div>
+            <div class="coin-details"><div class="coin-name">USDC</div><div class="coin-sub">USD Coin</div></div>
+          </div>
+          <div class="coin-right">
+            <div class="coin-amount">0.00036984</div>
+            <div class="coin-fiat">৳0.04611962</div>
+            <div class="coin-actions">
+              <button class="mini-btn" onclick="showDemo('Earn USDC')">Earn</button>
+              <button class="mini-btn" onclick="showDemo('Trade USDC')">Trade</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="historyModal" class="modal">
+      <div class="modal-content history-modal">
+        <div class="modal-header">
+          <h2>Select History</h2>
+          <span class="close" id="closeHistory">&times;</span>
+        </div>
+        <div class="modal-body">
+          <div class="history-item" onclick="showDemo('Assets History')">
+            <div class="history-title">Assets <span class="history-arrow">›</span></div>
+            <div class="history-desc">Overall, P2P, Convert, Pay, Earn, Transfer, Distribution</div>
+          </div>
+          <div class="history-item" onclick="showDemo('My Trades History')">
+            <div class="history-title">My Trades <span class="history-arrow">›</span></div>
+            <div class="history-desc">Spot, Cross Margin, Isolated Margin, USDⓈ-M Futures, COIN-M Futures...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item" data-screen="homeScreen" onclick="switchScreen('homeScreen', this)"><span class="nav-icon">🏠</span><div class="nav-label">Home</div></div>
+      <div class="nav-item" data-screen="marketsScreen" onclick="switchScreen('marketsScreen', this)"><span class="nav-icon">📊</span><div class="nav-label">Markets</div></div>
+      <div class="nav-item" data-screen="tradeScreen" onclick="switchScreen('tradeScreen', this)"><span class="nav-icon">⇄</span><div class="nav-label">Trade</div></div>
+      <div class="nav-item" data-screen="futuresScreen" onclick="switchScreen('futuresScreen', this)"><span class="nav-icon">📈</span><div class="nav-label">Futures</div></div>
+      <div class="nav-item active" data-screen="assetsScreen" onclick="switchScreen('assetsScreen', this)"><span class="nav-icon">👛</span><div class="nav-label">Assets</div></div>
+    </div>
+  </section>
+
+  <!-- ==================== PROFILE SCREEN ==================== -->
+  <section id="profileScreen" class="screen" style="display:none;">
+    <div class="app profile-app">
+      <div class="profile-header">
+        <div class="back-btn" onclick="switchScreen('homeScreen', null)">←</div>
+        <h2 class="profile-title">Profile</h2>
+        <div class="header-actions">
+          <span class="header-icon">👤+</span>
+          <span class="header-icon" onclick="switchScreen('settingsScreen', null)">⚙️</span>
+        </div>
+      </div>
+      <div class="profile-info">
+        <div class="profile-avatar-large">🛡️</div>
+        <div class="profile-details">
+          <div class="profile-uid">589013165-User-2cf... <span class="copy-icon">📋</span></div>
+          <div class="profile-badges">
+            <span class="badge-profile creator">Creator</span>
+            <span class="badge-profile verified">Verified</span>
+            <span class="badge-profile regular">Regular</span>
+          </div>
+        </div>
+      </div>
+      <div class="profile-rewards">
+        <div class="rewards-header">
+          <span>Total Creator Rewards 👁️</span>
+          <span>›</span>
+        </div>
+        <div class="rewards-amount">$0</div>
+        <div class="rewards-stats">
+          <span>Followers <strong>21</strong></span>
+          <span>Likes <strong>14</strong></span>
+          <span>Shares <strong>4</strong></span>
+        </div>
+      </div>
+      <div class="profile-support">
+        <div class="support-avatar">😊</div>
+        <div class="support-text">BDCCOIN Support</div>
+        <button class="support-btn" onclick="showDemo('Get Support')">Get Support</button>
+      </div>
+      <div class="profile-grid-2">
+        <div class="profile-card" onclick="showDemo('Refer & Earn')">
+          <div class="card-icon">$</div>
+          <div class="card-title">Refer&Earn Together</div>
+          <div class="card-desc">Unlock Up to 400 USDC Monthly</div>
+        </div>
+        <div class="profile-card" onclick="showDemo('Surprise')">
+          <div class="card-icon">🎁</div>
+          <div class="card-title">For You</div>
+          <div class="card-desc">Your Pumpkin Surprise Is Here!</div>
+        </div>
+      </div>
+      <div class="profile-list-item" onclick="showDemo('My Vouchers')">
+        <div class="list-title">My Vouchers</div>
+        <div class="list-subtitle">Total Rewards $2.5 | Used 1 | Received 4</div>
+        <div class="voucher-preview">
+          <div class="voucher-amount">100 USDC</div>
+          <div class="voucher-desc">Trading Fee Rebate V...</div>
+          <button class="voucher-btn">Use</button>
+        </div>
+        <span class="list-arrow">›</span>
+      </div>
+      <div class="profile-list-item" onclick="showDemo('My Tasks')">
+        <div class="list-title">My Tasks</div>
+        <div class="list-subtitle">Unlock rewards worth 42 PTS today</div>
+        <div class="task-timer">End Time 09H : 18M</div>
+        <span class="list-arrow">›</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SETTINGS SCREEN ==================== -->
+  <section id="settingsScreen" class="screen" style="display:none;">
+    <div class="app settings-app">
+      <div class="settings-header">
+        <div class="back-btn" onclick="switchScreen('homeScreen', null)">←</div>
+        <h2 class="settings-title">Settings</h2>
+        <div style="width: 24px;"></div>
+      </div>
+      <div class="settings-section">
+        <div class="section-label">General</div>
+        <div class="settings-list">
+          <div class="settings-item" onclick="showDemo('Notification Preference')"><span>Notification Preference</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('Currency')"><span>Currency</span><div class="settings-value">BDT <span class="settings-arrow">›</span></div></div>
+          <div class="settings-item" onclick="showDemo('Language')"><span>Language</span><div class="settings-value">English <span class="settings-arrow">›</span></div></div>
+          <div class="settings-item" onclick="showDemo('AI Preference')"><span>BDCCOIN AI Preference</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('Custom Tab')"><span>Custom Tab</span><span class="settings-arrow">›</span></div>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="section-label">Appearance</div>
+        <div class="settings-list">
+          <div class="settings-item" onclick="showDemo('Theme')"><span>Theme</span><div class="settings-value">Use device settings <span class="settings-arrow">›</span></div></div>
+          <div class="settings-item" onclick="showDemo('Color Preference')"><span>Color Preference</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('Timezone')"><span>Change(%) & Chart Timezone</span><div class="settings-value">Last 24 hours <span class="settings-arrow">›</span></div></div>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="section-label">Payment and Wallet</div>
+        <div class="settings-list">
+          <div class="settings-item" onclick="showDemo('Payment Currency')"><span>Payment Currency</span><div class="settings-value">BDT <span class="settings-arrow">›</span></div></div>
+          <div class="settings-item" onclick="showDemo('P2P Settings')"><span>P2P Settings</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('Withdrawal Address')"><span>Withdrawal Address</span><span class="settings-arrow">›</span></div>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="section-label">Others</div>
+        <div class="settings-list">
+          <div class="settings-item" onclick="showDemo('Tools')"><span>Tools</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('Clear Cache')"><span>Clear Cache</span><div class="settings-value">936.86MB <span class="settings-arrow">›</span></div></div>
+          <div class="settings-item" onclick="showDemo('Help & Support')"><span>Help & Support</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('Privacy Center')"><span>Privacy Center</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('About Us')"><span>About Us</span><span class="settings-arrow">›</span></div>
+          <div class="settings-item" onclick="showDemo('Check for updates')"><span>Check for updates</span><div class="settings-value">1.0.0 <span class="settings-arrow">›</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES SCREEN ==================== -->
+  <section id="servicesScreen" class="screen" style="display:none;">
+    <div class="app services-app">
+      <div class="services-header">
+        <div class="back-btn" onclick="switchScreen('homeScreen', null)">←</div>
+        <h2 class="services-title">Services</h2>
+        <div style="width: 24px;"></div>
+      </div>
+      <div class="services-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search more services" class="search-input" id="servicesSearchInput" oninput="filterServices(this.value)">
+      </div>
+      <div class="shortcut-section">
+        <div class="shortcut-header">
+          <span class="shortcut-title">Shortcut</span>
+          <span class="shortcut-toggle-icon" id="shortcutToggleIcon" onclick="toggleShortcutSection()">▼</span>
+        </div>
+        <div class="shortcut-content" id="shortcutContent">
+          <div class="shortcut-toggle-row">
+            <span class="shortcut-toggle-label">Add to Homepage</span>
+            <label class="switch">
+              <input type="checkbox" id="addToHomepageToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="shortcut-icons-row">
+            <div class="shortcut-icon-item" data-feature="Launchpool"><span class="shortcut-emoji">🚀</span></div>
+            <div class="shortcut-icon-item" data-feature="Earn"><span class="shortcut-emoji">💰</span></div>
+            <div class="shortcut-icon-item" data-feature="Trading Bots"><span class="shortcut-emoji">🤖</span></div>
+            <div class="shortcut-icon-item" data-feature="Red Packet"><span class="shortcut-emoji">🎁</span></div>
+            <button class="shortcut-edit-btn" onclick="showDemo('Edit Shortcuts')">✏️</button>
+          </div>
+        </div>
+      </div>
+      <div class="services-tabs-container">
+        <div class="services-tabs" id="servicesTabs">
+          <div class="services-tab active" data-tab="common" onclick="switchServicesTab('common', this)">Common Function</div>
+          <div class="services-tab" data-tab="gift" onclick="switchServicesTab('gift', this)">Gift & Campaign</div>
+          <div class="services-tab" data-tab="trade" onclick="switchServicesTab('trade', this)">Trade</div>
+          <div class="services-tab" data-tab="earn" onclick="switchServicesTab('earn', this)">Earn</div>
+          <div class="services-tab" data-tab="finance" onclick="switchServicesTab('finance', this)">Finance</div>
+          <div class="services-tab" data-tab="info" onclick="switchServicesTab('info', this)">Information</div>
+          <div class="services-tab" data-tab="help" onclick="switchServicesTab('help', this)">Help & Support</div>
+          <div class="services-tab" data-tab="others" onclick="switchServicesTab('others', this)">Others</div>
+        </div>
+      </div>
+      <div class="services-content" id="servicesContent">
+        <div class="services-panel active" id="panel-common">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('Transfer')"><div class="service-icon">⇄</div><div class="service-label">Transfer</div></div>
+            <div class="service-item" onclick="showDemo('BDCCOIN Wallet')"><div class="service-icon">💳</div><div class="service-label">BDCCOIN Wallet</div></div>
+            <div class="service-item" onclick="showDemo('Launchpool')"><div class="service-icon">🚀</div><div class="service-label">Launchpool</div></div>
+            <div class="service-item" onclick="showDemo('Referral')"><div class="service-icon">👤+</div><div class="service-label">Referral</div></div>
+            <div class="service-item" onclick="showDemo('Pay')"><div class="service-icon">💸</div><div class="service-label">Pay</div></div>
+            <div class="service-item" onclick="showDemo('Orders')"><div class="service-icon">📋</div><div class="service-label">Orders</div></div>
+            <div class="service-item" onclick="showDemo('Sell to Fiat')"><div class="service-icon">💵</div><div class="service-label">Sell to Fiat</div></div>
+            <div class="service-item" onclick="showDemo('Withdraw Fiat')"><div class="service-icon">🏦</div><div class="service-label">Withdraw Fiat</div></div>
+            <div class="service-item" onclick="showDemo('Security')"><div class="service-icon">🔒</div><div class="service-label">Security</div></div>
+            <div class="service-item" onclick="showDemo('Foreign Exchange')"><div class="service-icon">💱</div><div class="service-label">Foreign Exchange</div></div>
+            <div class="service-item" onclick="showDemo('Account Statement')"><div class="service-icon">📄</div><div class="service-label">Account Statement</div></div>
+            <div class="service-item" onclick="showDemo('Add Funds')"><div class="service-icon">➕</div><div class="service-label">Add Funds</div></div>
+            <div class="service-item" onclick="showDemo('Demo Trading')"><div class="service-icon">🎮</div><div class="service-label">Demo Trading</div></div>
+            <div class="service-item" onclick="showDemo('Disable Account')"><div class="service-icon">🚫</div><div class="service-label">Disable Account</div></div>
+          </div>
+        </div>
+        <div class="services-panel" id="panel-gift">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('Traders League')"><div class="service-icon">👑</div><div class="service-label">Traders League</div></div>
+            <div class="service-item" onclick="showDemo('Word of the Day')"><div class="service-icon">📅</div><div class="service-label">Word of the Day</div></div>
+            <div class="service-item" onclick="showDemo('Monthly Challenge')"><div class="service-icon">🏆</div><div class="service-label">Monthly Challenge</div></div>
+            <div class="service-item" onclick="showDemo('Rewards Hub')"><div class="service-icon">🎟️</div><div class="service-label">Rewards Hub</div></div>
+            <div class="service-item" onclick="showDemo('Referral Gift')"><div class="service-icon">🎁</div><div class="service-label">Referral Gift</div></div>
+            <div class="service-item" onclick="showDemo('My Swag')"><div class="service-icon">🛍️</div><div class="service-label">My Swag</div></div>
+            <div class="service-item" onclick="showDemo('Learn & Earn')"><div class="service-icon">📖</div><div class="service-label">Learn & Earn</div></div>
+            <div class="service-item" onclick="showDemo('Red Packet')"><div class="service-icon">🧧</div><div class="service-label">Red Packet</div></div>
+            <div class="service-item" onclick="showDemo('Alpha Events')"><div class="service-icon">🅰️</div><div class="service-label">Alpha Events</div></div>
+          </div>
+        </div>
+        <div class="services-panel" id="panel-trade">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('Convert Recurring')"><div class="service-icon">🔄</div><div class="service-label">Convert Recurring</div></div>
+            <div class="service-item" onclick="showDemo('Options')"><div class="service-icon">📱</div><div class="service-label">Options</div></div>
+            <div class="service-item" onclick="showDemo('Convert')"><div class="service-icon">📐</div><div class="service-label">Convert</div></div>
+            <div class="service-item" onclick="showDemo('Alpha')"><div class="service-icon">🅰️</div><div class="service-label">Alpha</div></div>
+            <div class="service-item" onclick="showDemo('Smart Money')"><div class="service-icon">💡</div><div class="service-label">Smart Money</div></div>
+            <div class="service-item" onclick="showDemo('Spot')"><div class="service-icon">🎯</div><div class="service-label">Spot</div></div>
+            <div class="service-item" onclick="showDemo('Stocks')"><div class="service-icon">📊</div><div class="service-label">Stocks</div></div>
+            <div class="service-item" onclick="showDemo('Prediction')"><div class="service-icon">🔮</div><div class="service-label">Prediction</div></div>
+            <div class="service-item" onclick="showDemo('Margin')"><div class="service-icon">📈</div><div class="service-label">Margin</div></div>
+            <div class="service-item" onclick="showDemo('Copy Trading')"><div class="service-icon">👥</div><div class="service-label">Copy Trading</div></div>
+          </div>
+        </div>
+        <div class="services-panel" id="panel-earn">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('BTC Yield')"><div class="service-icon">₿</div><div class="service-label">BTC Yield</div></div>
+            <div class="service-item" onclick="showDemo('Earn')"><div class="service-icon">💰</div><div class="service-label">Earn</div></div>
+            <div class="service-item" onclick="showDemo('On-chain Yields')"><div class="service-icon">🔗</div><div class="service-label">On-chain Yields</div></div>
+            <div class="service-item" onclick="showDemo('TradFi Wealth')"><div class="service-icon">🏦</div><div class="service-label">TradFi Wealth</div></div>
+            <div class="service-item" onclick="showDemo('VIP Earn')"><div class="service-icon">💎</div><div class="service-label">VIP Earn</div></div>
+            <div class="service-item" onclick="showDemo('Simple Earn')"><div class="service-icon">🔗</div><div class="service-label">Simple Earn</div></div>
+            <div class="service-item" onclick="showDemo('Staking')"><div class="service-icon">📷</div><div class="service-label">Staking</div></div>
+            <div class="service-item" onclick="showDemo('USD Yield Hub')"><div class="service-icon">💵</div><div class="service-label">USD Yield Hub</div></div>
+            <div class="service-item" onclick="showDemo('Yield Arena')"><div class="service-icon">🏟️</div><div class="service-label">Yield Arena</div></div>
+            <div class="service-item" onclick="showDemo('Pool')"><div class="service-icon">⛏️</div><div class="service-label">Pool</div></div>
+            <div class="service-item" onclick="showDemo('Dual Investment')"><div class="service-icon">🔄</div><div class="service-label">Dual Investment</div></div>
+            <div class="service-item" onclick="showDemo('Discount Buy')"><div class="service-icon">🏷️</div><div class="service-label">Discount Buy</div></div>
+            <div class="service-item" onclick="showDemo('BDC Vault')"><div class="service-icon">🔷</div><div class="service-label">BDC Vault</div></div>
+          </div>
+        </div>
+        <div class="services-panel" id="panel-finance">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('Flexible Rate Loan')"><div class="service-icon">💼</div><div class="service-label">Flexible Rate Loan</div></div>
+            <div class="service-item" onclick="showDemo('Loans')"><div class="service-icon">🤝</div><div class="service-label">Loans</div></div>
+            <div class="service-item" onclick="showDemo('Sharia Earn')"><div class="service-icon">⚙️</div><div class="service-label">Sharia Earn</div></div>
+            <div class="service-item" onclick="showDemo('VIP Loan')"><div class="service-icon">💰</div><div class="service-label">VIP Loan</div></div>
+            <div class="service-item" onclick="showDemo('BDCCOIN Wealth')"><div class="service-icon">📈</div><div class="service-label">BDCCOIN Wealth</div></div>
+          </div>
+        </div>
+        <div class="services-panel" id="panel-info">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('Chat')"><div class="service-icon">💬</div><div class="service-label">Chat</div></div>
+            <div class="service-item" onclick="showDemo('ABCs of Crypto')"><div class="service-icon">📖</div><div class="service-label">ABC's of Crypto</div></div>
+            <div class="service-item" onclick="showDemo('Square')"><div class="service-icon">📡</div><div class="service-label">Square</div></div>
+            <div class="service-item" onclick="showDemo('BDCCOIN Academy')"><div class="service-icon">🎓</div><div class="service-label">BDCCOIN Academy</div></div>
+            <div class="service-item" onclick="showDemo('Research')"><div class="service-icon">🔬</div><div class="service-label">Research</div></div>
+            <div class="service-item" onclick="showDemo('Deposit & Withdrawal')"><div class="service-icon">📄</div><div class="service-label">Deposit & Withdrawal</div></div>
+            <div class="service-item" onclick="showDemo('Airdrop')"><div class="service-icon">🪂</div><div class="service-label">Airdrop</div></div>
+            <div class="service-item" onclick="showDemo('Proof of Reserves')"><div class="service-icon">✅</div><div class="service-label">Proof of Reserves</div></div>
+          </div>
+        </div>
+        <div class="services-panel" id="panel-help">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('BDCCOIN AI')"><div class="service-icon">✨</div><div class="service-label">BDCCOIN AI</div></div>
+            <div class="service-item" onclick="showDemo('Action Required')"><div class="service-icon">⚠️</div><div class="service-label">Action Required</div></div>
+            <div class="service-item" onclick="showDemo('BDCCOIN Verify')"><div class="service-icon">✅</div><div class="service-label">BDCCOIN Verify</div></div>
+            <div class="service-item" onclick="showDemo('Support')"><div class="service-icon">❓</div><div class="service-label">Support</div></div>
+            <div class="service-item" onclick="showDemo('Customer Service')"><div class="service-icon">🎧</div><div class="service-label">Customer Service</div></div>
+            <div class="service-item" onclick="showDemo('Product Feedback')"><div class="service-icon">😊</div><div class="service-label">Product Feedback</div></div>
+            <div class="service-item" onclick="showDemo('Self Service')"><div class="service-icon">🤝</div><div class="service-label">Self Service</div></div>
+          </div>
+        </div>
+        <div class="services-panel" id="panel-others">
+          <div class="services-grid">
+            <div class="service-item" onclick="showDemo('Affiliate')"><div class="service-icon">🌐</div><div class="service-label">Affiliate</div></div>
+            <div class="service-item" onclick="showDemo('BDCCOIN Junior')"><div class="service-icon">🌱</div><div class="service-label">BDCCOIN Junior</div></div>
+            <div class="service-item" onclick="showDemo('Third-party Account')"><div class="service-icon">📁</div><div class="service-label">Third-party Account</div></div>
+            <div class="service-item" onclick="showDemo('Megadrop')"><div class="service-icon">🪂</div><div class="service-label">Megadrop</div></div>
+            <div class="service-item" onclick="showDemo('Token Unlock')"><div class="service-icon">🔓</div><div class="service-label">Token Unlock</div></div>
+            <div class="service-item" onclick="showDemo('Gift Card')"><div class="service-icon">🎁</div><div class="service-label">Gift Card</div></div>
+            <div class="service-item" onclick="showDemo('Trading Insight')"><div class="service-icon">📊</div><div class="service-label">Trading Insight</div></div>
+            <div class="service-item" onclick="showDemo('API Management')"><div class="service-icon">⚙️</div><div class="service-label">API Management</div></div>
+            <div class="service-item" onclick="showDemo('Marketplace')"><div class="service-icon">🏪</div><div class="service-label">Marketplace</div></div>
+            <div class="service-item" onclick="showDemo('BART')"><div class="service-icon">🛡️</div><div class="service-label">BART</div></div>
+            <div class="service-item" onclick="showDemo('Send Cash')"><div class="service-icon">💵</div><div class="service-label">Send Cash</div></div>
+            <div class="service-item" onclick="showDemo('Charity')"><div class="service-icon">❤️</div><div class="service-label">Charity</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
