@@ -1,0 +1,21 @@
+{
+  "name": "BDCCOIN - Your Trusted Crypto Wallet",
+  "short_name": "BDCCOIN",
+  "description": "Smart, Safe, Global cryptocurrency wallet. Founded by MD Hasan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000814",
+  "theme_color": "#000814",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "business"],
+  "lang": "en",
+  "dir": "ltr"
+}
